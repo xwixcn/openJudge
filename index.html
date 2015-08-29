@@ -104,12 +104,90 @@ the file can be found in <code>judge-interface/webserver/</code>
 <li>This can also be done via the Django Admin</li>
 </ul>
 </li>
-<li>Run the judge with <code>python -c 'from openjudge.slave import Slave;Slave().run()'</code>
+<li>Run the judge with <code>openjudge</code>
 </li>
 <li>Tell everyone to navigate to the webserver. It will be something like <code>192.168.1.45</code>
 </li>
 <li>Enjoy the fruits of watching a hundred people program.</li>
 </ol>
+
+<h2>
+<a id="command-line-options" class="anchor" href="#command-line-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Command line options</h2>
+
+<p>All options are available via command line.</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>-h</code>, <code>--help</code>
+</td>
+<td>Show this help message and exit</td>
+</tr>
+<tr>
+<td>
+<code>-ll</code>, <code>--log-level</code>
+</td>
+<td>Logging level. Integer value accepted</td>
+</tr>
+<tr>
+<td>
+<code>-t</code>, <code>--timeout</code>
+</td>
+<td>The time in seconds to wait before declaring code to be timed out.</td>
+</tr>
+<tr>
+<td>
+<code>-d</code>, <code>--check-data-folder</code>
+</td>
+<td>Path to the folder which must be used for data storage</td>
+</tr>
+<tr>
+<td>
+<code>-w</code>, <code>--web-server</code>
+</td>
+<td>Address of webserver. example 192.168.1.15:80</td>
+</tr>
+<tr>
+<td>
+<code>-u</code>, <code>--detail-url</code>
+</td>
+<td>URL where details of question and languages may be found</td>
+</tr>
+<tr>
+<td>
+<code>-b</code>, <code>--bind</code>
+</td>
+<td>Address where the slave must listen. example ('127.0.0.1', 9000)</td>
+</tr>
+<tr>
+<td>
+<code>-j</code>, <code>--job-list-prefix</code>
+</td>
+<td>The prefix string used to store job list files</td>
+</tr>
+<tr>
+<td>
+<code>-p</code>, <code>--protocol</code>
+</td>
+<td>The protocol used by the webserver. example https://</td>
+</tr>
+<tr>
+<td>
+<code>-l</code>, <code>--log-file</code>
+</td>
+<td>The name of the log file to use for logging purposes</td>
+</tr>
+</tbody>
+</table>
+
+<p>Invoke via <code>openjudge --help</code></p>
 
 <h2>
 <a id="gotchas" class="anchor" href="#gotchas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gotchas</h2>
