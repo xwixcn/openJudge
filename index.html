@@ -32,10 +32,11 @@
 <a id="openjudge" class="anchor" href="#openjudge" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenJudge</h1>
 
 <p><a href="https://travis-ci.org/theSage21/openJudge"><img src="https://travis-ci.org/theSage21/openJudge.svg" alt="Build Status"></a>
-<a href="https://coveralls.io/github/theSage21/openJudge?branch=master"><img src="https://coveralls.io/repos/theSage21/openJudge/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a></p>
+<a href="https://coveralls.io/github/theSage21/openJudge?branch=master"><img src="https://coveralls.io/repos/theSage21/openJudge/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a>
+<a href="http://badge.fury.io/py/openjudge"><img src="https://badge.fury.io/py/openjudge.svg" alt="PyPI"></a></p>
 
-<p>A judge I made to judge the programming competitions in college.
-It requires a web interface to function.</p>
+<p>A judge made to judge the programming competitions held over LAN.
+It requires a web based interface to function.</p>
 
 <p>Language support is unlimited, as long as you can write a shell script for it.
 The interface I use is <a href="https://github.com/theSage21/judge-interface">judge-interface</a>.
@@ -46,6 +47,7 @@ The interface ships with</p>
 <li>python2</li>
 <li>gcc</li>
 <li>g++</li>
+<li>java</li>
 </ul>
 
 <h2>
@@ -53,7 +55,7 @@ The interface ships with</p>
 
 <ul>
 <li>Judging programs by hand quickly becomes an experience best forgotten</li>
-<li>Roll my own</li>
+<li>Roll-my-own</li>
 </ul>
 
 <h2>
@@ -104,8 +106,7 @@ the file can be found in <code>judge-interface/webserver/</code>
 <li>This can also be done via the Django Admin</li>
 </ul>
 </li>
-<li>Run the judge with <code>openjudge</code>
-</li>
+<li>Run the judge with <code>openjudge</code>. As many instances as needed can be initiated. I usually work with 5</li>
 <li>Tell everyone to navigate to the webserver. It will be something like <code>192.168.1.45</code>
 </li>
 <li>Enjoy the fruits of watching a hundred people program.</li>
@@ -124,6 +125,12 @@ the file can be found in <code>judge-interface/webserver/</code>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<code>-v</code>, <code>--version</code>
+</td>
+<td>Show version info and exit</td>
+</tr>
 <tr>
 <td>
 <code>-h</code>, <code>--help</code>
