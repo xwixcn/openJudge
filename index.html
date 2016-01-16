@@ -31,16 +31,9 @@
         <h1>
 <a id="openjudge" class="anchor" href="#openjudge" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenJudge</h1>
 
-<p><a href="https://travis-ci.org/theSage21/openJudge"><img src="https://travis-ci.org/theSage21/openJudge.svg" alt="Build Status"></a>
-<a href="https://coveralls.io/github/theSage21/openJudge?branch=master"><img src="https://coveralls.io/repos/theSage21/openJudge/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a>
-<a href="http://badge.fury.io/py/openjudge"><img src="https://badge.fury.io/py/openjudge.svg" alt="PyPI"></a></p>
+<p>v 0.4.0</p>
 
-<p>A judge made to judge the programming competitions held over LAN.
-It requires a web based interface to function.</p>
-
-<p>Language support is unlimited, as long as you can write a shell script for it.
-The interface I use is <a href="https://github.com/theSage21/judge-interface">judge-interface</a>.
-The interface ships with</p>
+<p>A judge made to judge the programming competitions held over LAN.</p>
 
 <ul>
 <li>python3</li>
@@ -49,6 +42,8 @@ The interface ships with</p>
 <li>g++</li>
 <li>java</li>
 </ul>
+
+<p>Supported out of the box.</p>
 
 <h2>
 <a id="why" class="anchor" href="#why" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why?</h2>
@@ -62,30 +57,17 @@ The interface ships with</p>
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <pre><code>cd ~
-mkdir judge
-cd judge
+git clone --depth 1  https://github.com/theSage21/openjudge
 virtualenv -p python3 env
 source env/bin/activate
-pip install openjudge
-</code></pre>
-
-<p>In order to setup the interface one can do the following.</p>
-
-<pre><code>cd ~
-git clone https://github.com/theSage21/judge-interface.git
-cd judge-interface
 ./setup.sh
 </code></pre>
 
-<ol>
-<li>
-<code>./setup.sh</code> does most of the work for you.</li>
-<li>Set the SLAVE_ADDRESSES in settings.py by default it is set to 127.0.0.1:9000</li>
-</ol>
+<p><code>./setup.sh</code> does most of the work for you.</p>
 
 <p>The interface is set up as a standard django server. I prefer using Nginx,Gunicorn as a 
 combination. Check my <a href="http://arjoonn.blogspot.com/2015/05/django-gunicorn-and-nginx.html">blog</a> for how to set that up.
-<code>setup.sh</code> does this for you.</p>
+<code>setup.sh</code> only sets up the code for you. You still need to deploy on your own.</p>
 
 <p>Note that the judge will have to run on a linux like machine. I shamelessly used redirection
 and I have no idea how they translate on a windows box if they do at all. Besides that, 
@@ -95,106 +77,20 @@ the interface can run on another machine and the judge on another.</p>
 <a id="usage-during-the-competition" class="anchor" href="#usage-during-the-competition" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage during the competition</h2>
 
 <ol>
-<li>Run the interface with <code>./runserver.sh</code>
+<li>Run the interface with <code>./server.sh</code>
 </li>
-<li>Register users:
+<li>Signup users
 
 <ul>
-<li>Register users with <code>python add_user.py</code> using a python shell at the registration desk.
-the file can be found in <code>judge-interface/webserver/</code>
-</li>
-<li>This can also be done via the Django Admin</li>
+<li>Signup</li>
+<li>Login</li>
+<li>Register for a contest</li>
 </ul>
 </li>
-<li>Run the judge with <code>openjudge</code>. As many instances as needed can be initiated. I usually work with 5</li>
 <li>Tell everyone to navigate to the webserver. It will be something like <code>192.168.1.45</code>
 </li>
 <li>Enjoy the fruits of watching a hundred people program.</li>
 </ol>
-
-<h2>
-<a id="command-line-options" class="anchor" href="#command-line-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Command line options</h2>
-
-<p>All options are available via command line.</p>
-
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<code>-v</code>, <code>--version</code>
-</td>
-<td>Show version info and exit</td>
-</tr>
-<tr>
-<td>
-<code>-h</code>, <code>--help</code>
-</td>
-<td>Show this help message and exit</td>
-</tr>
-<tr>
-<td>
-<code>-ll</code>, <code>--log-level</code>
-</td>
-<td>Logging level. Integer value accepted</td>
-</tr>
-<tr>
-<td>
-<code>-t</code>, <code>--timeout</code>
-</td>
-<td>The time in seconds to wait before declaring code to be timed out.</td>
-</tr>
-<tr>
-<td>
-<code>-d</code>, <code>--check-data-folder</code>
-</td>
-<td>Path to the folder which must be used for data storage</td>
-</tr>
-<tr>
-<td>
-<code>-w</code>, <code>--web-server</code>
-</td>
-<td>Address of webserver. example 192.168.1.15:80</td>
-</tr>
-<tr>
-<td>
-<code>-u</code>, <code>--detail-url</code>
-</td>
-<td>URL where details of question and languages may be found</td>
-</tr>
-<tr>
-<td>
-<code>-b</code>, <code>--bind</code>
-</td>
-<td>Address where the slave must listen. example ('127.0.0.1', 9000)</td>
-</tr>
-<tr>
-<td>
-<code>-j</code>, <code>--job-list-prefix</code>
-</td>
-<td>The prefix string used to store job list files</td>
-</tr>
-<tr>
-<td>
-<code>-p</code>, <code>--protocol</code>
-</td>
-<td>The protocol used by the webserver. example https://</td>
-</tr>
-<tr>
-<td>
-<code>-l</code>, <code>--log-file</code>
-</td>
-<td>The name of the log file to use for logging purposes</td>
-</tr>
-</tbody>
-</table>
-
-<p>Invoke via <code>openjudge --help</code></p>
 
 <h2>
 <a id="gotchas" class="anchor" href="#gotchas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gotchas</h2>
